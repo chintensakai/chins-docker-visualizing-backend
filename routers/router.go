@@ -2,6 +2,7 @@ package routers
 
 import (
 	"github.com/chins/go-docker-visualizing/pkg"
+	"github.com/chins/go-docker-visualizing/sdk"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,7 +14,8 @@ func InitRouter() *gin.Engine {
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "pong",
+			"message":    "pong",
+			"containers": sdk.GetContainers(),
 		})
 	})
 	return r
