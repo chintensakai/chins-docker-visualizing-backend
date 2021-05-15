@@ -17,8 +17,12 @@ type Container struct {
 }
 
 func GetContainers() []Container {
+
 	ctx := context.Background()
-	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+
+	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation(),
+		client.WithHost("tcp://192.168.1.248:2375"))
+
 	if err != nil {
 		panic(err)
 	}
