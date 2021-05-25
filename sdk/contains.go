@@ -20,9 +20,11 @@ func GetContainers() []Container {
 
 	ctx := context.Background()
 
-	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation(),
-		client.WithHost("tcp://192.168.1.248:2375"))
+	// cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation(),
+	// 	client.WithHost("tcp://192.168.1.248:2375"))
 
+	// 本地
+	cli, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {
 		panic(err)
 	}
