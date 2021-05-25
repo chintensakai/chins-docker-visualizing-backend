@@ -35,10 +35,10 @@ func GetContainers() []Container {
 	result := make([]Container, 0, len(containers))
 	for _, container := range containers {
 		tmp := Container{
-			ID:      container.ID,
+			ID:      container.ID[:16],
 			Names:   container.Names[0],
 			Image:   container.Image,
-			ImageID: container.ImageID,
+			ImageID: container.ImageID[8:24],
 			Created: container.Created,
 			State:   container.State,
 		}

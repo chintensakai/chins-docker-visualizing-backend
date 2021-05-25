@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"github.com/chins/go-docker-visualizing/middleware"
 	"github.com/chins/go-docker-visualizing/pkg"
 	"github.com/gin-gonic/gin"
 )
@@ -9,6 +10,7 @@ func InitRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.Cors())
 	gin.SetMode(pkg.RunMode)
 
 	r.GET("/ping", func(c *gin.Context) {

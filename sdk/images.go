@@ -37,7 +37,7 @@ func GetImages() []Image {
 
 	for _, image := range images {
 		tmp := Image{
-			Id:         image.ID,
+			Id:         image.ID[8:24],
 			Created:    image.Created,
 			Repository: strings.Split(image.RepoTags[0], ":")[0],
 			Tags:       strings.Split(image.RepoTags[0], ":")[1],
