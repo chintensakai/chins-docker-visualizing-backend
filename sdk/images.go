@@ -1,11 +1,9 @@
 package sdk
 
 import (
-	"context"
 	"strings"
 
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/client"
 )
 
 type Image struct {
@@ -17,16 +15,16 @@ type Image struct {
 }
 
 func GetImages() []Image {
-	ctx := context.Background()
+	// ctx := context.Background()
 
 	// cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation(),
 	// 	client.WithHost("tcp://192.168.1.248:2375"))
 
 	// 本地
-	cli, err := client.NewClientWithOpts(client.FromEnv)
-	if err != nil {
-		panic(err)
-	}
+	// cli, err := client.NewClientWithOpts(client.FromEnv)
+	// if err != nil {
+	// 	panic(err)
+	// }
 
 	images, err := cli.ImageList(ctx, types.ImageListOptions{})
 

@@ -1,10 +1,7 @@
 package sdk
 
 import (
-	"context"
-
 	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/client"
 )
 
 type Container struct {
@@ -18,16 +15,16 @@ type Container struct {
 
 func GetContainers() []Container {
 
-	ctx := context.Background()
+	// ctx := context.Background()
 
 	// cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation(),
 	// 	client.WithHost("tcp://192.168.1.248:2375"))
 
 	// 本地
-	cli, err := client.NewClientWithOpts(client.FromEnv)
-	if err != nil {
-		panic(err)
-	}
+	// cli, err := client.NewClientWithOpts(client.FromEnv)
+	// if err != nil {
+	// 	panic(err)
+	// }
 	containers, err := cli.ContainerList(ctx, types.ContainerListOptions{All: true})
 	if err != nil {
 		panic(err)
@@ -45,4 +42,16 @@ func GetContainers() []Container {
 		result = append(result, tmp)
 	}
 	return result
+}
+
+func StartContainer(containerId string) {
+	if err := cli.ContainerStart(ctx, containerId, types.ContainerStartOptions{}); err != nil {
+		panic(err)
+	}
+}
+
+func StopContainer(containerId string) {
+	if err := cli.ContainerStop(ctx, containerId, nil); err != nil {
+		panic(err)
+	}
 }

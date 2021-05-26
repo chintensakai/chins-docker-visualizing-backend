@@ -23,6 +23,13 @@ func InitRouter() *gin.Engine {
 	{
 		//获取容器列表
 		api.GET("/containers", GetContainers)
+
+		//启动容器
+		api.PUT("/container/start/:id", StartContainer)
+
+		//启动容器
+		api.PUT("/container/stop/:id", StopContainer)
+
 		//获取镜像列表
 		api.GET("/images", GetImages)
 	}
